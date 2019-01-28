@@ -10,17 +10,22 @@ import java.util.HashMap;
 
 public class Driver_lab1 {
 
+  //This will hold the cypher map of alpha chars to numbers
   private static final HashMap<Character, Integer> CYPHERMAP = new HashMap<>();
 
   public static void main(String[] args) throws IOException {
     String plainText = args[0];
+    //Split input on new line
     String[] splitPlainText = plainText.split("\\r?\\n");
     createMap();
+    //for each line that is passed in run str2int
     for (String line : splitPlainText) {
       int[] encryptedLine;
       encryptedLine = str2int(line);
+      //Print out the line, this could be handled in str2int for efficency sake
       for (int i = 0; i < encryptedLine.length; i++) {
-        if (i != encryptedLine.length) {
+        int LENGTHTOADDSPACES = encryptedLine.length -1;
+        if (i != LENGTHTOADDSPACES) {
           System.out.println(encryptedLine[i] + " ");
         }
         else {
