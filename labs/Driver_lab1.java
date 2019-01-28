@@ -1,22 +1,55 @@
+
+/**
+ * file:Driver_lab1.java author: Troy Flagg course: MSCS630 assignment: lab 1
+ * due date: January 27, 2018 version: 1
+ *
+ * This file contains the driver for lab1 which converts letters to numbers
+ */
+import java.io.IOException;
 import java.util.HashMap;
+
 public class Driver_lab1 {
 
-  public static void main(String[] args) {
-    private static HashMap<Character, Integer> CYPHERMAP = new HashMap<Character, String>();
+  private static final HashMap<Character, Integer> CYPHERMAP = new HashMap<>();
+
+  public static void main(String[] args) throws IOException {
+    String plainText = args[0];
+    String[] splitPlainText = plainText.split("\\r?\\n");
+    createMap();
+    for (String line : splitPlainText) {
+      int[] encryptedLine;
+      encryptedLine = str2int(line);
+      for (int i = 0; i < encryptedLine.length; i++) {
+        if (i != encryptedLine.length) {
+          System.out.println(encryptedLine[i] + " ");
+        }
+        else {
+          System.out.println(encryptedLine[i]);
+        }
+      }
+    }
 
   }
 
-  int[] str2int(String plainText){
+  /**
+   * A method to convert a string to integers
+   *
+   * @param plainText a string that we will encrypt
+   * @return an array of integers based on the string
+   */
+  public static int[] str2int(String plainText) {
     int[] encryptedText = new int[plainText.length()];
-    int forEachItter = 0;
-    for(char c: plainText) {
-      encryptedText[forEachItter] = CYPHERMAP.get(Character.toUpperCase(c));
-      forEachItter++;
+    for (int i = 0; i < plainText.length(); i++) {
+      encryptedText[i] = CYPHERMAP.get(
+        Character.toUpperCase(plainText.charAt(i)));
     }
     return encryptedText;
   }
 
-  public static void createMap(){
+  /**
+   * Initalize the static CYPHERMAP
+   */
+  public static void createMap() {
     CYPHERMAP.put('A', 0);
     CYPHERMAP.put('B', 1);
     CYPHERMAP.put('C', 2);
