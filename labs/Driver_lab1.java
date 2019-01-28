@@ -1,4 +1,3 @@
-
 /**
  * file:Driver_lab1.java author: Troy Flagg course: MSCS630 assignment: lab 1
  * due date: January 27, 2018 version: 1
@@ -22,9 +21,11 @@ public class Driver_lab1 {
       for (int i = 0; i < numberOfLines; i++) {
         int[] encryptedLine;
         encryptedLine = str2int(args[i]);
-        //Print out the line, this could be handled in str2int for efficency sake
+        //Print out the line, this could be handled in str2int
+        //for efficency sake
         for (int j = 0; j < encryptedLine.length; j++) {
           int LENGTHTOADDSPACES = encryptedLine.length - 1;
+          //We want to add spaces to output until the last character
           if (j != LENGTHTOADDSPACES) {
             System.out.print(encryptedLine[j] + " ");
           } else {
