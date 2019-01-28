@@ -14,22 +14,21 @@ public class Driver_lab1 {
   private static final HashMap<Character, Integer> CYPHERMAP = new HashMap<>();
 
   public static void main(String[] args) throws IOException {
-    if (args != null) {
-      String plainText = args[0];
-      //Split input on new line
-      String[] splitPlainText = plainText.split("\\r?\\n");
+    int numberOfLines = args.length;
+    //Ensure we are passed input
+    if (numberOfLines != 0) {
       createMap();
       //for each line that is passed in run str2int
-      for (String line : splitPlainText) {
+      for (int i = 0; i < numberOfLines; i++) {
         int[] encryptedLine;
-        encryptedLine = str2int(line);
+        encryptedLine = str2int(args[i]);
         //Print out the line, this could be handled in str2int for efficency sake
-        for (int i = 0; i < encryptedLine.length; i++) {
+        for (int j = 0; j < encryptedLine.length; j++) {
           int LENGTHTOADDSPACES = encryptedLine.length - 1;
-          if (i != LENGTHTOADDSPACES) {
-            System.out.print(encryptedLine[i] + " ");
+          if (j != LENGTHTOADDSPACES) {
+            System.out.print(encryptedLine[j] + " ");
           } else {
-            System.out.println(encryptedLine[i]);
+            System.out.println(encryptedLine[j]);
           }
         }
       }
