@@ -26,7 +26,7 @@ public class Driver_lab1 {
       for (int i = 0; i < encryptedLine.length; i++) {
         int LENGTHTOADDSPACES = encryptedLine.length -1;
         if (i != LENGTHTOADDSPACES) {
-          System.out.println(encryptedLine[i] + " ");
+          System.out.print(encryptedLine[i] + " ");
         }
         else {
           System.out.println(encryptedLine[i]);
