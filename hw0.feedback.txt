@@ -1,0 +1,23 @@
+10 points
+
+Troy,
+
+- Good job in creating your accounts!
+
+- Good job in setting up your java compiler in your system.
+
+- Good job with your first GitHub submission!
+
+- Good organization of your repository! :)
+
+- Excellent!
+
+However,
+** Please, if the repo is public, remove your labs; I don't want other students
+   being able to use your code to cheat in the assignments. The submission site
+   will always keep a copy for you anyway.
+
+
+Peace,
+
+- Dr. Pablo Rivas
