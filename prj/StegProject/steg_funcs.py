@@ -2,15 +2,15 @@ import subprocess
 import os, signal, time
 
 
-class stegHide:
+class StegHide:
 
-	def call_process(command):
+	def call_process(self, command):
 		process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		out, err = process.communicate()
 		process.wait()
 		return out
 
-	def steg_info(filenames):
+	def steg_info(self, filenames):
 		sizes = []
 		for s in filenames:
 			process = subprocess.Popen(["steghide\steghide.exe", "info", "pictures/" + s], stderr=subprocess.STDOUT,
@@ -25,22 +25,22 @@ class stegHide:
 				sizes.append(int(float(infoarray[18])) - 100)
 		return sizes
 
-	def steg_version():
-		return call_process(["steghide\steghide.exe", "--version"])
+	def steg_version(self):
+		return self.call_process(["steghide\steghide.exe", "--version"])
 
 
-	def md5_pass(file):
-		return str.split(call_process(["md5sum", file]))[0]
+	def md5_pass(self, file):
+		return str.split(self.call_process(["md5sum", file]))[0]
 
-	def steg_hide(files_to_hide, files_to_use, password):
+	def steg_hide(self, files_to_hide, files_to_use, password):
 		print(files_to_hide)
 		print(files_to_use)
 		for h, u in zip(files_to_hide, files_to_use):
 			print(
-				call_process(["steghide\steghide.exe", "embed", "-ef", str(h), "-cf", "pictures/" + u, "-p", password]))
+				self.call_process(["steghide\steghide.exe", "embed", "-ef", str(h), "-cf", "pictures/" + u, "-p", password]))
 			os.remove(str(h))
 
-	def steg_read(files_to_read, password):
+	def steg_read(self, files_to_read, password):
 		"""
 
 		:param files_to_read:
@@ -49,7 +49,7 @@ class stegHide:
 		"""
 		filesarray = []
 		for s in files_to_read:
-			call_process(["steghide\steghide.exe", "extract", "-xf", "temp", "-sf", s, "-p", password, "-f"])
+			self.call_process(["steghide\steghide.exe", "extract", "-xf", "temp", "-sf", s, "-p", password, "-f"])
 			extracted_file = open("temp", "r")
 			filesarray.append(extracted_file.read())
 			extracted_file.close()
@@ -58,18 +58,18 @@ class stegHide:
 		return filesarray
 
 	# reads images into an array from the image file
-	def read_images():
+	def read_images(self):
 		return os.listdir("pictures/")
 
 	# joins the file parts back together- not really needed.
-	def join_files(file_parts):
+	def join_files(self, file_parts):
 		outfile = open("DECRYPTED", "w")
 		for i in file_parts:
 			outfile.write(i)
 	# outfile.write(i.read())
 
 	# returns an array of the file names written
-	def split_file(file_to_read, sizearray):
+	def split_file(self, file_to_read, sizearray):
 		readbytes = 0
 		infile = open(file_to_read)
 		files_written = []
