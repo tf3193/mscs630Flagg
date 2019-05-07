@@ -3,7 +3,7 @@ Security Algorithms Steganography Project
 
 
 #HOW TO RUN:
-create a "pictures" directory under src. This is where all pictures you use to hide your text file in will be stored.
+create a "pictures" directory. This is where all pictures you use to hide your text file in will be stored.
 
 run `python main.py` and choose your options.
 
