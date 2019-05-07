@@ -6,6 +6,7 @@ class CryptoMethods:
     key = ""
     cipher = ''
     decipher = ''
+
     def __init__(self, key):
         if key.len() in validKeyLength:
             self.key = key
