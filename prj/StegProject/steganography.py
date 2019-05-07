@@ -5,12 +5,20 @@ import os, signal, time
 class stegHide:
 
 	def call_process(command):
+		"""
+		Create a helper method for calling subprocesses
+		:return:
+		"""
 		process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		out, err = process.communicate()
 		process.wait()
 		return out
 
 	def steg_info(filenames):
+		"""
+		Generates steganography file info for how much data each image can hold.
+		:return :
+		"""
 		sizes = []
 		for s in filenames:
 			process = subprocess.Popen(["steghide\steghide.exe", "info", "pictures/" + s], stderr=subprocess.STDOUT,
@@ -25,7 +33,11 @@ class stegHide:
 				sizes.append(int(float(infoarray[18])) - 100)
 		return sizes
 
-	def steg_version():
+	def steg_version(self):
+		"""
+		Returns the steganography version.
+		:return:
+		"""
 		return call_process(["steghide\steghide.exe", "--version"])
 
 
