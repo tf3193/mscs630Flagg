@@ -45,8 +45,8 @@ def client():
 	steg.join_files(filesarray)
 	exit(0)
 
-steg = steganography()
-web = webmethods()
+steg = steganography.StegHide()
+web = webmethods.webHostAndScraper()
 
 
 operation = input("Serve(1), Recieve(2), or Check Space(3) DONT PICK 3 it will blow things up: ")

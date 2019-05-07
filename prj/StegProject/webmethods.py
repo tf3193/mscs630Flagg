@@ -7,11 +7,14 @@ import urllib.request
 from html.parser import HTMLParser
 
 
-class webHostAndScraper:
+class WebHostAndScraper:
 	"""
 	Class to contain all web methods.
 	"""
 	imageList = []
+
+	def __init__(self):
+		self.imageList = []
 
 	def start_http(self):
 		"""
@@ -35,14 +38,6 @@ class webHostAndScraper:
 		for s in string_array:
 			myfile.write("<IMG SRC=pictures/" + s + ">" + "\n")
 
-	class MyHTMLParser(HTMLParser):
-		"""
-		Override the handle_starttag method in htmlparser to scrape for images on the web page.
-		"""
-		def handle_starttag(self, tag, attrs):
-			for attr in attrs:
-				self.imageList.append(attr[1].split("/")[1])
-
 	def download_imgs(self, ip_addrress):
 		"""
 		Downloads images that are hosted at the given ip address on port 8000
@@ -51,7 +46,7 @@ class webHostAndScraper:
 		"""
 		urlobj = urllib.request.urlopen("http://" + ip_addrress + ":8000")
 		web_pg = str(urlobj.read())
-		parser = self.MyHTMLParser()
+		parser = MyHTMLParser()
 		parser.feed(web_pg)
 		imgsarray = []
 		# loops over the gathered image names and downloads them
@@ -59,3 +54,12 @@ class webHostAndScraper:
 			urllib.request.urlretrieve("http://" + ip_addrress + ":8000/pictures/" + s, s)
 			imgsarray.append(s)
 		return imgsarray
+
+
+class MyHTMLParser(HTMLParser):
+	"""
+	Override the handle_starttag method in htmlparser to scrape for images on the web page.
+	"""
+	def handle_starttag(self, tag, attrs):
+		for attr in attrs:
+			self.imageList.append(attr[1].split("/")[1])
