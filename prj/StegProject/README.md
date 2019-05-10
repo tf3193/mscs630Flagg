@@ -2,7 +2,7 @@ Security Algorithms Steganography Project
 ====================
 
 
-#SETUP:
+# SETUP:
 There are a few dependencies needed , I have included steghide in the parent directory. I have also included an a condaEnv.yaml file you can use to create a mirror of my conda environment. You will need to change the prefix and name if you so choose.
 
 An "Empty" pictures directory exists under StegProject. This is where all pictures you use to hide your text file in will be stored.
@@ -13,7 +13,7 @@ order
 <AES_KEY>,<AES_INITIAL_VECTOR>,<STEGHIDE_PASSWORD>
 
 
-#How to use
+# How to use
 run `python main.py` You will be prompted for the secret file path. 
 
 From here choose your options. 
