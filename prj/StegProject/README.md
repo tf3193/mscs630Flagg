@@ -34,6 +34,6 @@ From here choose your options.
 
 
 
-#common errors:
+# common errors:
 - If you are getting permission errors, ensure you have write permission to the StegProject directory
 - This is only tested on windows. 
