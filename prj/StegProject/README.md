@@ -20,6 +20,7 @@ From here choose your options.
 
 ## Option 1
 - After option 1 will ask you for a file, for example there bob.txt provided. 
+- THIS HAS WORKED IN SMALL TESTS WITH PICTURES 
 - You will then be asked what port you want to serve on.
 - Then a simple web server will spin up hosting your images with in this case holds bob.txt's data
 
@@ -37,3 +38,4 @@ From here choose your options.
 # common errors:
 - If you are getting permission errors, ensure you have write permission to the StegProject directory
 - This is only tested on windows. 
+- Very little testing on image encryption. 
