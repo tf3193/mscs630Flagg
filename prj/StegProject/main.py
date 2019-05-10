@@ -28,6 +28,7 @@ try:
 	else:
 		print('Your Secret file had less than 3 elements in the CSV, check it and ensure that it follows the '
 		      'following format: <key>,<IV>,<Steghide Password>')
+		exit()
 except FileNotFoundError:
 	print('Your given file does not exist or the file path is wrong.')
 	exit()
